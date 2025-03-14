@@ -1,0 +1,74 @@
+!!!! CIURCUIT !!!!
+Lmotor n2 n3 {parLmotor}
+VmotorVAR n2 n1 PWL(0 0 1e-9 0)
+Rmotor n3 0 {parRmotor}
+VpwmVAR1 n1 0 PWL(0 0 1e-9 0)
+X1 0 n1 1PS79SB30
+.param parRmotor=120
+.param parLmotor=0.3
+.ic V(n1)=0
+**********MODELS**********
+*****MODEL1*****
+*
+*******************************************
+*
+*1PS79SB30
+*
+*NXP Semiconductors
+*
+*Schottky barrier diode
+*
+*
+*
+*
+*IFSM = 1A    @ tp = 8,3ms
+*VF   = 600mV @ IF = 200mA
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*Package pinning does not match Spice model pinning.
+*Package: SOD523
+*
+*Package Pin 1 : Cathode 
+*Package Pin 2 : Anode
+* 
+* 
+*
+*
+*Simulator: PSPICE
+*
+*******************************************
+
+.SUBCKT 1PS79SB30 1 2
+*
+* The resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 9.5E+07
+D1 1 2 1PS79SB30
+*
+.MODEL 1PS79SB30 D
++ IS = 8E-08
++ N = 1.012
++ BV = 45
++ IBV = 0.0001
++ RS = 0.8243
++ CJO = 2.515E-11
++ VJ = 0.4182
++ M = 0.4941
++ FC = 0.5
++ TT = 0
++ EG = 0.69
++ XTI = 2
+.ENDS
+*
+*****MODEL2*****
